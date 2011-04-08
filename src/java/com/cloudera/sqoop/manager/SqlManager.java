@@ -135,9 +135,9 @@ public abstract class SqlManager extends ConnManager {
       ArrayList<String> columns = new ArrayList<String>();
       ResultSetMetaData metadata = results.getMetaData();
       for (int i = 1; i < cols + 1; i++) {
-        String colName = metadata.getColumnName(i);
+        String colName = metadata.getColumnLabel(i); 
         if (colName == null || colName.equals("")) {
-          colName = metadata.getColumnLabel(i);
+          colName = metadata.getColumnName(i);
           if (null == colName) {
             colName = "_RESULT_" + i;
           }
@@ -202,9 +202,9 @@ public abstract class SqlManager extends ConnManager {
       ResultSetMetaData metadata = results.getMetaData();
       for (int i = 1; i < cols + 1; i++) {
         int typeId = metadata.getColumnType(i);
-        String colName = metadata.getColumnName(i);
+        String colName = metadata.getColumnLabel(i); 
         if (colName == null || colName.equals("")) {
-          colName = metadata.getColumnLabel(i);
+          colName = metadata.getColumnName(i);            
         }
 
         colTypes.put(colName, Integer.valueOf(typeId));
